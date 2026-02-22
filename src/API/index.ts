@@ -11,7 +11,7 @@ export const port = 1349;
 // export const isDev = !query.get("isProd");
 
 // export const config = { apiAddress: isDev ? `http://localhost:${port}/` : "/" };
-export const apiUrl = `${HOST}:${port}/`;
+export const apiUrl = `${HOST}:${port}`;
 // export const apiUrl = config.apiAddress;
 
 export const apiRequest = async (url: string, method = "GET", body?: any) => {
@@ -23,7 +23,7 @@ export const apiRequest = async (url: string, method = "GET", body?: any) => {
     options.body = JSON.stringify(body);
   }
   let data: any = null;
-  return fetch(`${apiUrl}${url}`, options).then((res) => {
+  return fetch(`${apiUrl}/${url}`, options).then((res) => {
     data = res;
     return res.json().catch((_e) => data && data.status < 300);
   });

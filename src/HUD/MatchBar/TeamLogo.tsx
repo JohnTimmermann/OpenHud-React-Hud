@@ -24,7 +24,12 @@ const TeamLogo = ({
   return (
     <div className={`logo`}>
       {logo && id ? (
-        <img src={`${logo}`} width={width} height={height} alt={"Team logo"} />
+        <img
+          src={`${apiUrl + logo}`}
+          width={width}
+          height={height}
+          alt={"Team logo"}
+        />
       ) : (
         ""
       )}
