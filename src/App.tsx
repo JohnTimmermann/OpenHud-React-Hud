@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { CSGO } from "csgogsi";
 import Layout from "./HUD/Layout/Layout";
+import DangerZoneLayout from "./HUD/DangerZone/DangerZoneLayout";
+import { getLayoutVariant } from "./HUD/layoutSelector";
 import "./App.css";
 import { Match } from "./API/types";
 import { socket } from "./API/socket";
@@ -90,6 +92,12 @@ const App = () => {
   );
 
   if (!game) return null;
+
+  const layoutVariant = getLayoutVariant(game);
+
+  if (layoutVariant === "danger_zone") {
+    return <DangerZoneLayout game={game} />;
+  }
 
   return <Layout game={game} match={currentMatch} />;
 };

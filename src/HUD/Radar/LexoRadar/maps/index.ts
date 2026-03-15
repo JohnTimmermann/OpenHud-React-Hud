@@ -8,7 +8,13 @@ import de_nuke from "./de_nuke";
 import de_vertigo from "./de_vertigo";
 import de_ancient from "./de_ancient";
 import de_anubis from "./de_anubis";
-// import api from "../../../../API";
+import dz_blacksite from "./dz_blacksite";
+import dz_county from "./dz_county";
+import dz_frostbite from "./dz_frostbite";
+import dz_junglety from "./dz_junglety";
+import dz_sirocco from "./dz_sirocco";
+import dz_vineyard from "./dz_vineyard";
+import api from "../../../../API";
 import { Player } from "csgogsi";
 
 export type ZoomAreas = {
@@ -55,19 +61,23 @@ const maps: { [key: string]: MapConfig } = {
   de_vertigo,
   de_ancient,
   de_anubis,
+  dz_blacksite,
+  dz_county,
+  dz_frostbite,
+  dz_junglety,
+  dz_sirocco,
+  dz_vineyard,
 };
 
-// api.maps
-//   .get()
-//   .then((fallbackMaps) => {
-//     const mapNames = Object.keys(fallbackMaps);
-//     for (const mapName of mapNames) {
-//       if (mapName in maps) {
-//         continue;
-//       }
-//       maps[mapName] = fallbackMaps[mapName];
-//     }
-//   })
-//   .catch(() => {});
+api.maps
+  .get()
+  .then((fallbackMaps) => {
+    const mapNames = Object.keys(fallbackMaps);
+    for (const mapName of mapNames) {
+      if (mapName in maps) continue;
+      maps[mapName] = fallbackMaps[mapName];
+    }
+  })
+  .catch(() => {});
 
 export default maps;
